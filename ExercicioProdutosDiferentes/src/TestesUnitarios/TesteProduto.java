@@ -7,17 +7,20 @@ import org.junit.Test;
 
 import CodigoProducao.Produto;
 
+
 public class TesteProduto {
 	Produto produto;
 	Produto produtoCopia;
 	Produto produto2;
 	
-	
 	@Before
+	
 	public void inicializaProduto(){
 		produto = new Produto("Lapis","LPS455",1.80);
 		produtoCopia = new Produto("Lapis","LPS455",1.80);
 		produto2 = new Produto("Lapis","LPS465",1.65);
+		
+		
 	}
 	
 	@Test
