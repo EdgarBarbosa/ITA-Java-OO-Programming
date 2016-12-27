@@ -1,15 +1,12 @@
 package CodigoProducao;
 
-
-
 public class ProdutoComTamanho extends Produto {
 	private int tamanho;
 	public ProdutoComTamanho(String nome, String codigo, double preco, int tamanho) {
 		super(nome, codigo, preco);
-		
 		this.tamanho = tamanho;
-		
-	}
+			}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 13;
@@ -17,6 +14,7 @@ public class ProdutoComTamanho extends Produto {
 		result = prime * result + tamanho;
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

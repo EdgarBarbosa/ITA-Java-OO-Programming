@@ -7,8 +7,8 @@ import java.util.Set;
 
 public class CarrinhoDeCompras {
 	private Map <Produto,Integer> carrinhoDeCompras = new HashMap<Produto,Integer>();
-	
-	
+
+
 	public int totalDeItensDoCarrinho() {
 		Set chaves = carrinhoDeCompras.keySet();
 		Iterator i = chaves.iterator();
@@ -17,17 +17,17 @@ public class CarrinhoDeCompras {
 		while (i.hasNext()){
 			chave = (Produto)i.next();
 			totalDeItens += carrinhoDeCompras.get(chave);
-					}
+		}
 		return  totalDeItens;
 	}
-	
-	
+
+
 	public boolean adicionaProduto(Produto produto, Integer quantidade) {
 		if(carrinhoDeCompras.containsKey(produto)){
 			carrinhoDeCompras.put(produto, quantidade + carrinhoDeCompras.get(produto));
 		}
 		else carrinhoDeCompras.put(produto, quantidade);
-		
+
 		return carrinhoDeCompras.containsKey(produto);
 	}
 
@@ -36,13 +36,13 @@ public class CarrinhoDeCompras {
 		if(carrinhoDeCompras.containsKey(produto)){
 			return carrinhoDeCompras.get(produto);
 		}else
-		return 0;
+			return 0;
 	}
 
 
 	public double calculaTotalDaCompra() {
 		double totalDaCompra=0.0;
-		
+
 		Produto produto=null;
 		if(carrinhoDeCompras.isEmpty())
 			return totalDaCompra;
@@ -50,30 +50,30 @@ public class CarrinhoDeCompras {
 			Set chaves = carrinhoDeCompras.keySet();
 			Iterator i = chaves.iterator();
 			while (i.hasNext()){
-			produto = (Produto)i.next();
-			totalDaCompra += produto.getPreco()* this.totalDeItensDoProduto(produto);
+				produto = (Produto)i.next();
+				totalDaCompra += produto.getPreco()* this.totalDeItensDoProduto(produto);
 			}
 		}
 		return totalDaCompra;
-		
+
 	}
-	
+
 	public void esvaziaCarrinho(){
 		carrinhoDeCompras.clear();
-		
+
 	}
 
 
 	public boolean removeProduto(Produto produto) {
 		if(carrinhoDeCompras.size()==0)
-		return false;
+			return false;
 		else if (carrinhoDeCompras.containsKey(produto) && this.totalDeItensDoProduto(produto) > 1){
 			carrinhoDeCompras.replace(produto, carrinhoDeCompras.get(produto),carrinhoDeCompras.get(produto)-1);
 			return true;	
 		}else{
 			carrinhoDeCompras.remove(produto);
-			}
-		 return false;
+		}
+		return false;
 	}
 	public void imprimeProdutosDoCarrinho() {
 		Set chaves = carrinhoDeCompras.keySet();
@@ -83,7 +83,7 @@ public class CarrinhoDeCompras {
 		while (i.hasNext()){
 			chave = (Produto)i.next();
 			System.out.println(" " + chave.getNome() + " qtd " + carrinhoDeCompras.get(chave) );
-					}
-		
+		}
+
 	}
 }
