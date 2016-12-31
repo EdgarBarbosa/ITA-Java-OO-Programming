@@ -10,8 +10,8 @@ public class CarrinhoDeCompras {
 
 
 	public int totalDeItensDoCarrinho() {
-		Set chaves = carrinhoDeCompras.keySet();
-		Iterator i = chaves.iterator();
+		Set<Produto> chaves = carrinhoDeCompras.keySet();
+		Iterator<Produto> i = chaves.iterator();
 		Produto chave;
 		int totalDeItens=0;
 		while (i.hasNext()){
@@ -47,8 +47,8 @@ public class CarrinhoDeCompras {
 		if(carrinhoDeCompras.isEmpty())
 			return totalDaCompra;
 		else{
-			Set chaves = carrinhoDeCompras.keySet();
-			Iterator i = chaves.iterator();
+			Set<Produto> chaves = carrinhoDeCompras.keySet();
+			Iterator<Produto> i = chaves.iterator();
 			while (i.hasNext()){
 				produto = (Produto)i.next();
 				totalDaCompra += produto.getPreco()* this.totalDeItensDoProduto(produto);
@@ -72,14 +72,14 @@ public class CarrinhoDeCompras {
 			return true;	
 		}else{
 			carrinhoDeCompras.remove(produto);
+			return true;
 		}
-		return false;
+		
 	}
 	public void imprimeProdutosDoCarrinho() {
-		Set chaves = carrinhoDeCompras.keySet();
-		Iterator i = chaves.iterator();
+		Set<Produto> chaves = carrinhoDeCompras.keySet();
+		Iterator<Produto> i = chaves.iterator();
 		Produto chave;
-		int totalDeItens=0;
 		while (i.hasNext()){
 			chave = (Produto)i.next();
 			System.out.println(" " + chave.getNome() + " qtd " + carrinhoDeCompras.get(chave) );
