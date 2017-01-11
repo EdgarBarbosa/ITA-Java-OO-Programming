@@ -1,7 +1,12 @@
 package producao;
 
 public class EmbaralhadorInvertePalavra implements EmbaralhadorDePalavras{
-
+	private final double fatorDePontuacao = 0.1;
+	
+	@Override
+	public double getFatorDePontuacao() {
+		return fatorDePontuacao;
+	}
 
 	@Override
 	public  String embaralharPalavra(String palavraRecebidaParaEmbaralhar) {

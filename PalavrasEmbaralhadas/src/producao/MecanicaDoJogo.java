@@ -1,45 +1,43 @@
 package producao;
 
 public abstract class MecanicaDoJogo {
-	String palavraChave, palavraRespostaJogador, palabraEmbaralhada;
+	String palavraChaveAleatoria, palavraRespostaJogador, palabraEmbaralhada;
 	BancoDePalavras bancoDePalavras;
 	FabricaDeEmbaralhador fabricaDeEmbaralhador;
-	String caminhoDabaseDePalavras;
 	EmbaralhadorDePalavras embaralhadorDePalavras;
 	int pontuacaoDoJogador;
-	
-public  int getPontuacao(){
-	return pontuacaoDoJogador;
-}
 
-public abstract boolean isTerminado();
-public abstract int getVidas();
-public abstract double calcularFatorDePontuação();
+	public abstract boolean isTerminadoJogo();
+	public abstract int getNumeroDeVidasDoJogador();
+	public abstract double calcularPontuacaoDoJogador();
 
-public EmbaralhadorDePalavras getEmbaralhadorDePalavras() {
-	return embaralhadorDePalavras;
-}
-public String getPalavraChave() {
-		return palavraChave;
+	public  int getPontuacaoDoJogador(){
+		return pontuacaoDoJogador;
 	}
 
-	public void setPalavraChave(String palavraChave) {
-		this.palavraChave = palavraChave;
+	public EmbaralhadorDePalavras getEmbaralhadorDePalavras() {
+		return embaralhadorDePalavras;
+	}
+	public String getPalavraChave() {
+		return palavraChaveAleatoria;
 	}
 
-public boolean iniciaJogo(){
-	bancoDePalavras = new BancoDePalavras("./arquivosDedados/baseDePalavrasReal.txt");
-	fabricaDeEmbaralhador = new FabricaDeEmbaralhador();
-	embaralhadorDePalavras = fabricaDeEmbaralhador.getEmbaralhador();
-	this.palavraChave = bancoDePalavras.getPalavraAleatoria();
-	this.palabraEmbaralhada = embaralhadorDePalavras.embaralharPalavra(palavraChave);
-	this.palavraChave = FormatadorDePalavra.removeIfenDaPalavra(palavraChave);
-	
-	return true;
-}
+	public boolean isIniciadoJogo(){
+		bancoDePalavras = new BancoDePalavras("./arquivosDedados/baseDePalavrasReal.txt");
+		fabricaDeEmbaralhador = new FabricaDeEmbaralhador();
+		embaralhadorDePalavras = fabricaDeEmbaralhador.getEmbaralhador();
+		this.palavraChaveAleatoria = bancoDePalavras.getPalavraAleatoria();
+		this.palabraEmbaralhada = embaralhadorDePalavras.embaralharPalavra(palavraChaveAleatoria);
+		this.palavraChaveAleatoria = FormatadorDePalavra.removeIfenDaPalavra(palavraChaveAleatoria);
 
-public boolean isAcertouPalavraEmbaralhada(String palavraRespostaJogador){
-	
-	return this.palavraChave.equals(palavraRespostaJogador);
-}
+		return true;
+	}
+
+	public boolean isAcertouPalavraEmbaralhada(String palavraRespostaJogador){
+		if(this.palavraChaveAleatoria.equals(palavraRespostaJogador)){
+			calcularPontuacaoDoJogador();
+			return true;
+			}
+		else return false ;
+	}
 }

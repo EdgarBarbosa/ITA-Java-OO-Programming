@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class EmbaralhadorPermutaLetras implements EmbaralhadorDePalavras{
+	private final double fatorDePontuacao = 0.3;
 
+	@Override
+	public double getFatorDePontuacao() {
+		return fatorDePontuacao;
+	}
 	
 	@Override
 	public String embaralharPalavra(String palavraRecebidaParaEmbaralhar) {

@@ -13,7 +13,6 @@ import producao.MecanicaDoJogo;
 import producao.MecanicaModoVidas;
 
 public class TesteMecanicaDoJogo {
-
 	MecanicaDoJogo mecanicaDoJogo;
 	BancoDePalavras bancoDePalavras;
 	EmbaralhadorDePalavras embaralhador;
@@ -21,15 +20,16 @@ public class TesteMecanicaDoJogo {
 	
 	@Before
 	public void inicializador(){
+		bancoDePalavras = new BancoDePalavras("./arquivosDedados/baseDePalavrasTeste.txt");
 		fabricaDeEmbaralhador = new FabricaDeEmbaralhador();
 		mecanicaDoJogo =  new MecanicaModoVidas();
-		mecanicaDoJogo.iniciaJogo();
+		mecanicaDoJogo.isIniciadoJogo();
 		
 	}
 	@Test
 	public void testMecanicaModoVidas() {
 		
-		assertTrue(mecanicaDoJogo.iniciaJogo());
+		assertTrue(mecanicaDoJogo.isIniciadoJogo());
 	}
 
 	@Test

@@ -13,10 +13,10 @@ public class TesteFabricaDeMecanicaDeJogo {
 	@Test
 	public void testFrabricaDeMecanicaDoJogo() {
 		FabricaDeMecanicaDoJogo fabricaDeMecanicaDoJogo = new FabricaDeMecanicaDoJogo();
-		MecanicaDoJogo mecanicaDojogo =  fabricaDeMecanicaDoJogo.getMecanicaDoJogo(0);
+		MecanicaDoJogo mecanicaDojogo =  fabricaDeMecanicaDoJogo.getMecanicaDoJogo('0');
 		assertFalse(mecanicaDojogo == null);
 		assertTrue(mecanicaDojogo instanceof MecanicaModoVidas);
-		assertTrue(mecanicaDojogo.iniciaJogo());
+		assertTrue(mecanicaDojogo.isIniciadoJogo());
 		
 	}
 

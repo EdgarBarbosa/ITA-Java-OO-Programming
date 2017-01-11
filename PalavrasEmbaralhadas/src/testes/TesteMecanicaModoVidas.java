@@ -13,15 +13,15 @@ public class TesteMecanicaModoVidas extends TesteMecanicaDoJogo{
 	public void inicializador(){
 		fabricaDeEmbaralhador = new FabricaDeEmbaralhador();
 		mecanicaDoJogo =  new MecanicaModoVidas();
-		mecanicaDoJogo.iniciaJogo();
+		mecanicaDoJogo.isIniciadoJogo();
 	}
 	
 	
 	@Test
 	public void testPerdeUmaVida() {
 		mecanicaDoJogo.isAcertouPalavraEmbaralhada("qualquerCoisa");
-		assertEquals(4, mecanicaDoJogo.getVidas());
-		assertFalse(mecanicaDoJogo.isTerminado());
+		assertEquals(4, mecanicaDoJogo.getNumeroDeVidasDoJogador());
+		assertFalse(mecanicaDoJogo.isTerminadoJogo());
 		
 	}
 	
@@ -30,30 +30,28 @@ public class TesteMecanicaModoVidas extends TesteMecanicaDoJogo{
 		for (int i = 0; i < 5; i++) {
 			mecanicaDoJogo.isAcertouPalavraEmbaralhada("qualquerCoisa");
 		}		
-		assertEquals(0, mecanicaDoJogo.getVidas());
-		assertTrue(mecanicaDoJogo.isTerminado());
+		assertEquals(0, mecanicaDoJogo.getNumeroDeVidasDoJogador());
+		assertTrue(mecanicaDoJogo.isTerminadoJogo());
 	}
 
 	@Test
 	public void testCalculaPontuacaoEmbaralhadores() {
 		
 			testIsPalavraCertaVerdadeiro();
-			assertEquals(100, mecanicaDoJogo.getPontuacao(),1.00);
+			assertEquals(100, mecanicaDoJogo.getPontuacaoDoJogador(),1.00);
 			testIsPalavraCertaVerdadeiro();
 			testIsPalavraCertaVerdadeiro();
-			assertEquals(300, mecanicaDoJogo.getPontuacao(),1.00);
+			assertEquals(300, mecanicaDoJogo.getPontuacaoDoJogador(),1.00);
 		
 	}
 	@Test
 	public void testGanhaVidaACadaMilPontos() {
 		
-		for (int i = 0; i < 11; i++) {
+		for (int i = 0; i < 10; i++) {
 			testIsPalavraCertaVerdadeiro();
 		}
-		assertEquals(6, mecanicaDoJogo.getVidas());
+		assertEquals(6, mecanicaDoJogo.getNumeroDeVidasDoJogador());
 			
-		
-		
 	}
 	
 }
